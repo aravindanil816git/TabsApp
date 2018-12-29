@@ -1,0 +1,25 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
+    "express": "^4.15.4",
+    "node-adodb": "^4.2.2",
+    "is-stream": "^1.1.0",
+    "iterate-object": "^1.3.2",
+    "mustache": "^2.3.0",
+    "noop6": "^1.0.7",
+    "one-by-one": "^3.2.6",
+    "phantom-html-to-pdf": "^0.5.5",
+    "phantomjs-prebuilt": "^2.1.16",
+    "read-utf8": "^1.2.8",
+    "same-time": "^2.3.3",
+    "ul": "^5.2.13"
+  }
+}

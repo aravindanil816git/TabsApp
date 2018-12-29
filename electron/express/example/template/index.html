@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            padding: 30px;
+        }
+        div.container {
+            max-width: 1150px;
+            margin: 0 auto;
+            font-family: "Open Sans";
+        }
+
+        div.container p {
+            margin: 0;
+        }
+
+        .container h1,
+        .container h2 {
+            margin: 0px;
+            color: #2980b9;
+        }
+
+        .container h1 {
+            font-size: 27px
+        }
+
+       .left-wing {
+           float: left;
+            text-align: left;
+        }
+
+        .right-wing {
+            display: inline-block;
+            width: 42%;
+            text-align: right;
+        }
+        
+        hr {
+            border: 1px solid #2980b9;
+            margin: 30px 0;
+        }
+
+        table.bordered {
+            border-collapse: collapse;
+            font-size: 10pt;
+        }
+
+        table.bordered td,
+        table.bordered th,
+        table.bordered {
+            border: 2px solid #2980b9;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-top * {
+            vertical-align: top;
+        }
+
+        .monospaced {
+            font-family:sans-serif;
+        }
+
+        table.padded th,
+        table.padded td {
+            padding: 5px;
+        }
+
+        table th {
+            font-weight: normal;
+            background: #e6ecec;
+        }
+
+        .mt-s {
+            margin-top: 23px;
+        }
+
+        .mb-s {
+            margin-bottom: 23px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Seller Fields -->
+        <div>
+            <div class="left-wing">
+                <h1>Air Cooling Maintanence System</h1>
+                <p>D-3/91A, SANGAM VIHAR, NEWDELHI - 110082</p>
+            </div>
+
+            <!--invoice data-->
+            <div class="right-wing" style="float: right;">
+                <h2>INVOICE</h2>
+                           <p>Invoice-Number: {{invoice.invoicenum}} <br> 
+                            Invoice-Date: {{invoice.date}}
+                        </p> 
+            </div>
+
+        </div>
+        <div style="padding-top: 8%">
+            <div class="left-wing" style="max-width:40%;">
+                <b style="text-decoration:underline">Customer Info</b>
+                <p>Name: <strong>{{invoice.company_name}}</strong></p>
+                <p>Address: <strong>{{invoice.address}}</strong></p>
+                <p>State Code : <strong>{{invoice.stateCode}} , {{invoice.stateName}}</strong></p>
+                <p>GSTIN: <strong>{{invoice.gst}}</strong></p>
+                <p>Buyer P.O: <strong>{{invoice.po_num}}</strong></p>
+                <p>PAN: <strong>{{invoice.pan}}</strong></p><br>
+
+                <p>Consignee: <strong>Some  Name</strong></p>
+                <p>Address: <strong>{{invoice.consignee}}</strong></p>
+
+            </div>
+            <div class="right-wing" style="text-align :left; margin-left: 10%;">
+                    <b style="text-decoration:underline">Basic Info</b>
+                    <p>GSTIN: <strong>07BACP3880BNZZ3</strong></p>
+                    <p>Payment Terms & DueDate :<strong>  {{invoice.duedate}}</strong></p>
+                    <p>Contract No & Date: <strong>{{invoice.contract_no}} , {{invoice.contract_date}}</strong></p>
+                    <p>PAN: <strong>BXTP3880BN</strong></p>
+                    <p>Tax Payable on Reverse Chage: <strong>Rs {{invoice.taxreverse}}</strong></p><br>
+
+                    <p>Delivery Order No: <strong>{{invoice.delivery_no}}</strong></p>
+                    <p>Transportation Provider: <strong>{{invoice.transporter}}</strong></p>
+                    <p>Mode of Transport: <strong>{{invoice.transport_mode}}</strong></p>
+                    <p>Vehicle No: <strong>{{invoice.vehicle_num}}</strong></p>
+                    <p>LC No & Date: <strong>{{invoice.lc}}   {{invoice.lc_date}}</strong></p>
+                    <p>LR No & Date: <strong>{{invoice.lr}}  {{invoice.lr_date}}</strong></p>                    
+            </div>
+        </div>
+        <hr>
+
+
+
+        <table class="bordered full-width padded mt-s mb-s monospaced">
+            <thead>
+                <tr>
+                    <th style="width: 5%;"><strong>No.</strong></th>
+                    <th style="width: 30%;">
+                        <strong>Description</strong>
+                    </th>
+                    <th style="width: 5%;">
+                        <strong>HSN</strong><br>
+                    </th>
+                    <th style="width: 5%;">
+                        <strong>Qty.</strong><br>
+                    </th>
+                    <th style="width: 5%;">
+                            <strong>UOM</strong><br>
+                    </th>
+                    <th style="width: 8%;">
+                        <strong>Rate<br>
+                    </th>
+                    <th style="width: 8%;">
+                            <strong>Total<br>
+                    </th>
+                    <th style="width: 5%;">
+                        <strong>Disc. %<br>
+                    </th>
+                    <th style="width: 8%;">
+                            <strong>Taxable<br>
+                    </th>
+                    <th style="width: 5%;">
+                        <strong>Tax%<br>
+                    </th>
+                    <th style="width: 7%;">
+                            <strong>IGST<br>
+                        </th>
+                    <th style="width: 7%;">
+                        <strong>SGST<br>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-top">
+                {{{rendered_rows}}}
+                <tr>
+                    <td colspan="8" class="text-right">
+                        <strong>Invoice Total<br>&nbsp</strong>
+                    </td>
+                    <td  class="text-right">
+                        <strong>{{total.taxable}}</strong>
+                    </td>
+                    <td>
+                    </td>
+                    <td class="text-right">
+                            <strong>{{total.cgst}}</strong>
+                    </td>
+                    <td class="text-right">
+                            <strong>{{total.sgst}}</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="float:right; text-align: right;">
+                <p>Total: <strong>Rs {{total.nettotal}}.00</strong></p>
+                <strong style="font-size: 11pt">Rs. {{total.nettotal_words}} Only</strong>
+        </div>
+        Thank you for your business!
+
+        <div style="margin-top:5%;">
+                <div class="left-wing" style="font-size: 8pt; color: red;">
+                    <b style="text-decoration:underline">Terms and Condition</b>
+                    <p>Please check the products before taking Delivery<br>
+                        All disputes subject to Delhi jurisdiction<br>
+                        All Currencies is in INR<br>
+                        The risk of goods shall be that of buyes from the time goods are in favour of the buyer and kept ready for dispatch
+    
+                </div>
+                <div class="right-wing" style="width:30%; margin-top:5%; float:right;">
+                        <strong>Authorized Signature</strong>
+                </div>
+            </div>
+    </div>
+
+
+</body>
+
+</html>
